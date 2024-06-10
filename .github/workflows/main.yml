@@ -1,4 +1,4 @@
-name: Deploy FastAPI
+name: CI for FastAPI
 
 on:
   push:
@@ -6,10 +6,11 @@ on:
       - main
 
 jobs:
-  deploy:
-    name: Deploy FastAPI
+  test:
+    name: Run Tests and Lint
     runs-on: ubuntu-latest
-   
+    timeout-minutes: 5
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -20,15 +21,13 @@ jobs:
           python-version: '3.8.15'
 
       - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Install Flake8
+        run: pip install flake8
 
-      - name: Run flake8
+      - name: Run Flake8
         run: flake8
 
-      - name: Start FastAPI server
-        run: uvicorn main:app --host 0.0.0.0 --port 8000
+      - name: Run Pytest
+        run: pytest
