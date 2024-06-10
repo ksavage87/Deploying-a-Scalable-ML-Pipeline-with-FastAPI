@@ -1,5 +1,4 @@
 import os
-import sys
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 from train_model import X_test, y_test, compute_metrics
@@ -15,9 +14,6 @@ print(f"Loading model from {model_path}")
 with open(model_path, "rb") as f:
     model = pickle.load(f)
 
-# Load necessary data from train_model.py
-sys.path.append(project_dir)
-
 # Implement the first test
 def test_ml_function_type():
     """
@@ -27,14 +23,12 @@ def test_ml_function_type():
     prediction_array = list(prediction)
     assert isinstance(prediction_array, list)
 
-
 # Implement the second test
 def test_ml_algorithm():
     """
     Tests if the ML model uses the expected algorithm.
     """
     assert isinstance(model, RandomForestClassifier)
-
 
 # Implement the third test
 def test_compute_metrics():

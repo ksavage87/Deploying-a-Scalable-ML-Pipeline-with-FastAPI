@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
@@ -27,12 +26,10 @@ class Data(BaseModel):
 
 
 # Gets the directory of the current script
-current_dir = os.path.dirname(__file__)
-
-path = os.path.join(current_dir, "model", "encoder.pkl")
+path = os.path.join(os.path.dirname(__file__), "model", "encoder.pkl")
 encoder = load_model(path)
 
-path = os.path.join(current_dir, "model", "model.pkl")
+path = os.path.join(os.path.dirname(__file__), "model", "model.pkl")
 model = load_model(path)
 
 # TODO: create a RESTful API using FastAPI
@@ -68,11 +65,8 @@ async def post_inference(data: Data):
         "sex",
         "native-country",
     ]
-    data_processed, _, _, _ = process_data(
-        data,
-        categorical_features=cat_features,
-        encoder=encoder,
-        training=False,
-    )
+    
+    data_processed, _, _, _ = process_data(data, categorical_features=cat_features, encoder=encoder, training=False)
+
     _inference = inference(model, data_processed)
     return {"result": apply_label(_inference)}
