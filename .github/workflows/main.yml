@@ -5,29 +5,28 @@ on:
     branches:
       - main
 
-
 jobs:
   test:
-      runs-on: ubuntu-latest
-
+    name: Run tests
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8.15'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.15'
 
-    - name: Install Dependencies
-      run: |
-        pip install -r requirements.txt
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
 
-    - name: Run tests
-      run: python -m pytest test_ml.py
+      - name: Run tests
+        run: python -m pytest test_ml.py
       
   deploy:
-    name: test
+    name: Deploy FastAPI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
