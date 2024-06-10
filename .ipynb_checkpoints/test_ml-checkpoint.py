@@ -7,7 +7,6 @@ from sklearn.ensemble import RandomForestClassifier
 from train_model import X_test, y_test, compute_metrics
 from sklearn.metrics import fbeta_score, precision_score, recall_score, accuracy_score
 
-# Your remaining code goes here...
 
 # Get the absolute path to the directory containing this script
 project_dir = os.path.dirname(os.path.abspath(__file__))
@@ -20,9 +19,11 @@ print(f"Loading model from {model_path}")
 with open(model_path, "rb") as f:
     model = pickle.load(f)
 
+
 # Load necessary data from train_model.py
 sys.path.append(os.path.join(project_dir, "train_model.py"))
 from train_model import X_test, y_test, compute_metrics
+
 
 # Implement the first test
 def test_ml_function_type():
@@ -33,12 +34,14 @@ def test_ml_function_type():
     prediction_array = list(prediction)
     assert isinstance(prediction_array, list)
 
+
 # Implement the second test
 def test_ml_algorithm():
     """
     # Tests if the ML model uses the expected algorithm.
     """
     assert isinstance(model, RandomForestClassifier)
+
 
 # Implement the third test
 def test_compute_metrics():

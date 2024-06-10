@@ -1,5 +1,4 @@
 import os
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import fbeta_score, precision_score, recall_score, accuracy_score
@@ -14,6 +13,7 @@ from ml.model import (
     save_model,
     train_model,
 )
+
 # TODO: load the cencus.csv data
 project_path = "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
 data_path = os.path.join(project_path, "data", "census.csv")
@@ -42,7 +42,6 @@ X_train, y_train, encoder, lb = process_data(train, categorical_features=cat_fea
     # use the train dataset 
     # use training=True
     # do not need to pass encoder and lb as input
-
 X_test, y_test, _, _ = process_data(
     test,
     categorical_features=cat_features,
@@ -55,11 +54,13 @@ X_test, y_test, _, _ = process_data(
 # TODO: use the train_model function to train the model on the training dataset
 model = train_model(X_train, y_train)
 
+
 # save the model and the encoder
 model_path = os.path.join(project_path, "model", "model.pkl")
 save_model(model, model_path)
 encoder_path = os.path.join(project_path, "model", "encoder.pkl")
 save_model(encoder, encoder_path)
+
 
 # load the model
 model = load_model(
@@ -85,9 +86,9 @@ def compute_metrics(y, preds):
         'precision': precision,
         'recall': recall
     }
-    
     return metrics
-    
+
+
 # TODO: compute the performance on model slices using the performance_on_categorical_slice function
 # iterate through the categorical features
 for col in cat_features:

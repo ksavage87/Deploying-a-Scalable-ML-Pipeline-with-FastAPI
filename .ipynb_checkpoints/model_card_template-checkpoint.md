@@ -2,9 +2,6 @@
 
 For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
 
-##Github Link
-
-
 ## Model Details
 
 The model type used was the Random Forest Classifier. Random Forest Classifier is an ensemble learning method that constructs numerous decision trees, then collects the predictions of the trees and selects the best model of the individual trees. All of the hyperparameters were set to default.
