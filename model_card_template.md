@@ -3,6 +3,7 @@
 For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
 
 ##Github Link
+https://github.com/ksavage87/Deploying-a-Scalable-ML-Pipeline-with-FastAPI.git
 
 
 ## Model Details
