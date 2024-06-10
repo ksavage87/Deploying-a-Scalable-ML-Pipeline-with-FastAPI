@@ -1,9 +1,13 @@
 import os
+import sys  # Add this line to import the sys module
 import pytest
 import numpy as np
 import pickle
 from sklearn.ensemble import RandomForestClassifier
+from train_model import X_test, y_test, compute_metrics
 from sklearn.metrics import fbeta_score, precision_score, recall_score, accuracy_score
+
+# Your remaining code goes here...
 
 # Get the absolute path to the directory containing this script
 project_dir = os.path.dirname(os.path.abspath(__file__))

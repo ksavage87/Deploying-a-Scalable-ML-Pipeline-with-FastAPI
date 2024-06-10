@@ -26,10 +26,13 @@ class Data(BaseModel):
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
     native_country: str = Field(..., example="United-States", alias="native-country")
 
-path = "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/encoder.pkl" 
+# Gets the directory of the current script
+current_dir = os.path.dirname(__file__)
+
+path = os.path.join(current_dir, "model", "encoder.pkl") 
 encoder = load_model(path)
 
-path = "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/model.pkl"
+path = os.path.join(current_dir, "model", "model.pkl")
 model = load_model(path)
 
 # TODO: create a RESTful API using FastAPI
