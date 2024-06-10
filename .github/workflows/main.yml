@@ -27,8 +27,8 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run flake8
-        run: flake8
+      - name: Install Flake8
+        run: pip install flake8
 
       - name: Start FastAPI server
         run: uvicorn main:app --host 0.0.0.0 --port 8000
