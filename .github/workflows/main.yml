@@ -9,6 +9,7 @@ jobs:
   deploy:
     name: Deploy FastAPI
     runs-on: ubuntu-latest
+    timeout-minutes: 5
    
     steps:
       - name: Checkout Repository
