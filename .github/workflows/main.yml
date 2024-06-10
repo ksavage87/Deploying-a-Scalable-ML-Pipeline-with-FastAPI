@@ -1,0 +1,30 @@
+name: Deploy FastAPI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy FastAPI
+    runs-on: ubuntu-latest
+   
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.15'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run flake8
+        run: flake8
+
+      - name: Start FastAPI server
+        run: uvicorn main:app --host 0.0.0.0 --port 8000
