@@ -23,14 +23,12 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-<<<<<<< HEAD
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-=======
+
       - name: Run flake8
         run: flake8
->>>>>>> 7dcae68aec244c55dafb6cd71a7d737ac243b292
 
       - name: Start FastAPI server
         run: uvicorn main:app --host 0.0.0.0 --port 8000
