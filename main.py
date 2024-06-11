@@ -1,14 +1,24 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 import pandas as pd
+from train_model import process_data, inference, apply_label, load_model
 import uvicorn
 
 
+def load_model(path):
+
+    with open(path, 'rb') as f:
+        model = pickle.load(f)
+        return model
+
+
 encoder_path = (
-    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/encoder.pkl"
+    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
+    "model/encoder.pkl"
 )
 model_path = (
-    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/model.pkl"
+    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
+    "model/model.pkl"
 )
 encoder = load_model(encoder_path)
 model = load_model(model_path)
