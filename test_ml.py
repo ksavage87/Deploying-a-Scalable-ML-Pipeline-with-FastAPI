@@ -8,21 +8,9 @@ import pandas as pd
 
 
 project_path = os.path.dirname(os.path.abspath(__file__))
-print("Project directory:", project_path)
-
-
-while not os.path.exists(os.path.join(project_path, 'README.md')):
-    project_path = os.path.dirname(project_path)
-    print("Checking directory:", project_path)
-
-print("Root directory:", project_path)
 
 
 model_path = os.path.join(project_path, "model", "model.pkl")
-
-
-with open(model_path, "rb") as f:
-    model = pickle.load(f)
 
 
 data_path = os.path.join(project_path, 'data', 'census.csv')
@@ -32,15 +20,28 @@ data = pd.read_csv(data_path)
 
 
 def test_prediction_type():
+   with open(model_path, "rb") as f:
+        model = pickle.load(f)
+
+    data = pd.read_csv(data_path)
+    X_test = data.drop(columns=['salary'])
     prediction = model.predict(X_test)
     assert isinstance(prediction, (list, np.ndarray))
 
 
 def test_model_algorithm():
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
     assert isinstance(model, RandomForestClassifier)
 
 
-def test_compute_metrics():
+def test_compute_metrics
+     with open(model_path, "rb") as f:
+        model = pickle.load(f)
+
+    data = pd.read_csv(data_path)
+    X_test = data.drop(columns=['salary'])
+    y_test = data['salary']
     prediction = model.predict(X_test)
     metrics = compute_metrics(y_test, prediction)
     assert isinstance(metrics, dict)
