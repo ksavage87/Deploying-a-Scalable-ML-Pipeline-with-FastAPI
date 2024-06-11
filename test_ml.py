@@ -19,7 +19,7 @@ with open(model_path, "rb") as f:
 data_path = os.path.join(project_path, 'data', 'census.csv')
 
 
-print(f"Resolved data path: {data_path}")
+data = pd.read_csv(data_path)
 
 
 def test_prediction_type():
