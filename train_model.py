@@ -12,8 +12,11 @@ from ml.model import (
     train_model,
 )
 
+
 # TODO: load the census.csv data
-project_path = "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
+project_path = (
+    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
+)
 data_path = os.path.join(project_path, "data", "census.csv")
 print(data_path)
 data = pd.read_csv(data_path)
@@ -33,10 +36,14 @@ cat_features = [
 ]
 
 # TODO: use the process_data function provided to process the data.
-X_train, y_train, encoder, lb = process_data(train, categorical_features=cat_features, label="salary", training=True)  
-# use the train dataset 
-# use training=True
-# do not need to pass encoder and lb as input
+X_train, y_train, encoder, lb = process_data(
+    train,
+    categorical_features=cat_features,
+    label="salary",
+    training=True
+) 
+
+
 X_test, y_test, _, _ = process_data(
     test,
     categorical_features=cat_features,
@@ -70,6 +77,7 @@ def compute_metrics(y, preds):
     precision = precision_score(y, preds, zero_division=1)
     recall = recall_score(y, preds, zero_division=1)
     
+    
     metrics = {
         'accuracy': accuracy,
         'precision': precision,
@@ -89,4 +97,7 @@ for col in cat_features:
         )
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)
-            print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}", file=f)
+            print(
+    f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}",
+    file=f
+)

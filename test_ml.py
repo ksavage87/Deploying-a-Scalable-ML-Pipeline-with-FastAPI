@@ -1,4 +1,3 @@
-import os
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 from train_model import X_test, y_test, compute_metrics
@@ -38,3 +37,5 @@ def test_compute_metrics():
     prediction = model.predict(X_test)
     metrics = compute_metrics(y_test, prediction)
     assert isinstance(metrics, dict)
+
+    
