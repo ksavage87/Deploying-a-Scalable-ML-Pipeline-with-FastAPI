@@ -7,16 +7,17 @@ import numpy as np
 import pandas as pd
 
 
-project_path = os.path.dirname(os.path.abspath(__file__))
-
-
-model_path = os.path.join(project_path, "model", "model.pkl")
-
-
-data_path = os.path.join(project_path, 'data', 'census.csv')
+if os.getenv('GITHUB_ACTIONS') == 'true':
+    data_path = 'data/census.csv'
+else:
+    project_path = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(project_path, 'data', 'census.csv')
 
 
 data = pd.read_csv(data_path)
+
+
+model_path = os.path.join(project_path, "model", "model.pkl")
 
 
 def test_prediction_type():
