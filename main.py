@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 import pandas as pd
 import uvicorn
 
+
 class CensusData(BaseModel):
     age: int = Field(..., example=25)
     workclass: str = Field(..., example="Private")
@@ -10,9 +11,9 @@ class CensusData(BaseModel):
     education: str = Field(..., example="11th")
     education_num: int = Field(..., example=7, alias="education-num")
     marital_status: str = Field(
-    ...,
-    example="Never-married",
-    alias="marital-status"
+        ...,
+        example="Never-married",
+        alias="marital-status"
     )
     occupation: str = Field(..., example="Machine-op-inspct")
     relationship: str = Field(..., example="Own-child")
@@ -22,16 +23,19 @@ class CensusData(BaseModel):
     capital_loss: int = Field(..., example=0, alias="capital-loss")
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
     native_country: str = Field(
-    ...,
-    example="United-States",
-    alias="native-country"
+        ...,
+        example="United-States",
+        alias="native-country"
     )
 
+
 app = FastAPI()
+
 
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the Census Prediction API"}
+
 
 @app.post("/predict")
 def predict(data: CensusData):
@@ -57,8 +61,6 @@ async def post_inference(data: Data):
         "sex",
         "native-country",
     ]
-    
-
 
     data_processed, _, _, _ = process_data(
         data, 
