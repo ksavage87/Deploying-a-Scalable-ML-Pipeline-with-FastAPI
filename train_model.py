@@ -1,5 +1,5 @@
+import os  # Add import statement for os
 import pandas as pd
-import os
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 from ml.data import process_data
@@ -12,8 +12,7 @@ from ml.model import (
     train_model,
 )
 
-
-# TODO: load the census.csv data
+# Load the census.csv data
 project_path = (
     "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
 )
@@ -35,14 +34,13 @@ cat_features = [
     "native-country",
 ]
 
-# TODO: use the process_data function provided to process the data.
+# Process the data
 X_train, y_train, encoder, lb = process_data(
     train,
     categorical_features=cat_features,
     label="salary",
-    training=True
-) 
-
+    training=True,
+)
 
 X_test, y_test, _, _ = process_data(
     test,
@@ -55,13 +53,13 @@ X_test, y_test, _, _ = process_data(
 
 model = train_model(X_train, y_train)
 
-# save the model and the encoder
+# Save the model and the encoder
 model_path = os.path.join(project_path, "model", "model.pkl")
 save_model(model, model_path)
 encoder_path = os.path.join(project_path, "model", "encoder.pkl")
 save_model(encoder, encoder_path)
 
-# load the model
+# Load the model
 model = load_model(model_path)
 
 preds = inference(model, X_test)
@@ -70,34 +68,31 @@ preds = inference(model, X_test)
 p, r, fb = compute_model_metrics(y_test, preds)
 print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}")
 
-
 def compute_metrics(y, preds):
     print("compute_metrics called")
     accuracy = accuracy_score(y, preds)
     precision = precision_score(y, preds, zero_division=1)
     recall = recall_score(y, preds, zero_division=1)
     
-    
     metrics = {
         'accuracy': accuracy,
         'precision': precision,
-        'recall': recall
+        'recall': recall,
     }
     return metrics
 
-
-# iterate through the categorical features
+# Iterate through the categorical features
 for col in cat_features:
-    # iterate through the unique values in one categorical feature
+    # Iterate through the unique values in one categorical feature
     for slicevalue in sorted(test[col].unique()):
         count = test[test[col] == slicevalue].shape[0]
         p, r, fb = performance_on_categorical_slice(
-            test, col, slicevalue, cat_features, "salary", encoder, lb, model
-            # use test, col and slicevalue as part of the input
+            test, col, slicevalue, cat_features, "salary", encoder, lb, model,
         )
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)
             print(
-    f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}",
-    file=f
-)
+                f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}",
+                file=f,
+            )
+

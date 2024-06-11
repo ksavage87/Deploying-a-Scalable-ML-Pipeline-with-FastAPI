@@ -1,4 +1,6 @@
+import os
 import pickle
+import pytest
 from sklearn.ensemble import RandomForestClassifier
 from train_model import X_test, y_test, compute_metrics
 
@@ -13,29 +15,33 @@ print(f"Loading model from {model_path}")
 with open(model_path, "rb") as f:
     model = pickle.load(f)
 
-# Implement the first test
-def test_ml_function_type():
+# Test if the ML function returns the expected type of result
+def test_prediction_type():
     """
-    Tests if the ML function returns the expected type of result.
+    Tests if the ML function returns the prediction as a list.
     """
     prediction = model.predict(X_test)
-    prediction_array = list(prediction)
-    assert isinstance(prediction_array, list)
+    assert isinstance(prediction, list)
 
-# Implement the second test
-def test_ml_algorithm():
+# Test if the ML model uses the expected algorithm
+def test_model_algorithm():
     """
-    Tests if the ML model uses the expected algorithm.
+    Tests if the ML model is an instance of RandomForestClassifier.
     """
     assert isinstance(model, RandomForestClassifier)
 
-# Implement the third test
+# Test if the compute_metrics function returns the expected values
 def test_compute_metrics():
     """
-    Tests if the computing metrics function returns the expected values.
+    Tests if the compute_metrics function returns a dictionary.
     """
     prediction = model.predict(X_test)
     metrics = compute_metrics(y_test, prediction)
     assert isinstance(metrics, dict)
+    assert "accuracy" in metrics
+    assert "precision" in metrics
+    assert "recall" in metrics
 
+if __name__ == "__main__":
+    pytest.main()
     
