@@ -16,6 +16,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Download census.csv
+      run: |
+        mkdir -p data
+        wget -O data/census.csv https://raw.githubusercontent.com/ksavage87/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/main/data/census.csv
+
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
