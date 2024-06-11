@@ -36,7 +36,7 @@ def test_model_algorithm():
 
 
 def test_compute_metrics():
-     with open(model_path, "rb") as f:
+    with open(model_path, "rb") as f:
         model = pickle.load(f)
 
     data = pd.read_csv(data_path)
