@@ -2,14 +2,21 @@ import pickle
 import pytest
 from sklearn.ensemble import RandomForestClassifier
 from train_model import X_test, y_test, compute_metrics
+import os
 
 
-model_path = "model/model.pkl"
+project_path = os.path.dirname(os.path.abspath(__file__))
 print(f"Loading model from {model_path}")
 
-# Load the model from model.pkl
+
+model_path = os.path.join(project_path, "model", "model.pkl")
+
+
 with open(model_path, "rb") as f:
     model = pickle.load(f)
+
+
+data_path = os.path.join(project_path, "data", "census.csv")
 
 
 def test_prediction_type():
