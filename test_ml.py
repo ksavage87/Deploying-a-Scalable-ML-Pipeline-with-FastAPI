@@ -15,7 +15,7 @@ with open(model_path, "rb") as f:
     model = pickle.load(f)
 
 
-data_path = os.path.join(project_path, "data", "census.csv")
+data_path = os.path.join(project_path, "..", "data", "census.csv")
 
 
 def test_prediction_type():
