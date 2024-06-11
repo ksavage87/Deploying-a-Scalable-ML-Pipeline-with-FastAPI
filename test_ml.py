@@ -24,7 +24,6 @@ def test_prediction_type():
         model = pickle.load(f)
 
     data = pd.read_csv(data_path)
-    X_test = data.drop(columns=['salary'])
     prediction = model.predict(X_test)
     assert isinstance(prediction, (list, np.ndarray))
 
@@ -40,8 +39,6 @@ def test_compute_metrics():
         model = pickle.load(f)
 
     data = pd.read_csv(data_path)
-    X_test = data.drop(columns=['salary'])
-    y_test = data['salary']
     prediction = model.predict(X_test)
     metrics = compute_metrics(y_test, prediction)
     assert isinstance(metrics, dict)
