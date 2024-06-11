@@ -8,6 +8,14 @@ import pandas as pd
 
 
 project_path = os.path.dirname(os.path.abspath(__file__))
+print("Project directory:", project_path)
+
+
+while not os.path.exists(os.path.join(project_path, 'README.md')):
+    project_path = os.path.dirname(project_path)
+    print("Checking directory:", project_path)
+
+print("Root directory:", project_path)
 
 
 model_path = os.path.join(project_path, "model", "model.pkl")
