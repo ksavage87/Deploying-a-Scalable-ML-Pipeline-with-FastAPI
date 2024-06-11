@@ -3,6 +3,7 @@ import pytest
 from sklearn.ensemble import RandomForestClassifier
 from train_model import X_test, y_test, compute_metrics
 import os
+import numpy as np
 
 
 project_path = os.path.dirname(os.path.abspath(__file__))
@@ -23,7 +24,7 @@ print(f"Resolved data path: {data_path}")
 
 def test_prediction_type():
     prediction = model.predict(X_test)
-    assert isinstance(prediction, list)
+    assert isinstance(prediction, (list, np.ndarray))
 
 
 def test_model_algorithm():
