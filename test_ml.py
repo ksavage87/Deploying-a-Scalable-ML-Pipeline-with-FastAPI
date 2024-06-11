@@ -18,6 +18,9 @@ with open(model_path, "rb") as f:
 data_path = os.path.join(project_path, "..", "data", "census.csv")
 
 
+print(f"Resolved data path: {data_path}")
+
+
 def test_prediction_type():
     prediction = model.predict(X_test)
     assert isinstance(prediction, list)
