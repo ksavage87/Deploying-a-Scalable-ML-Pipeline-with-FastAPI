@@ -20,7 +20,7 @@ data = pd.read_csv(data_path)
 
 
 def test_prediction_type():
-   with open(model_path, "rb") as f:
+    with open(model_path, "rb") as f:
         model = pickle.load(f)
 
     data = pd.read_csv(data_path)
