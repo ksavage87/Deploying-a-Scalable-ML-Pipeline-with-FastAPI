@@ -15,7 +15,7 @@ with open(model_path, "rb") as f:
     model = pickle.load(f)
 
 
-data_path = os.path.join(project_path, "..", "data", "census.csv")
+data_path = os.path.join(current_dir, 'data', 'census.csv')
 
 
 print(f"Resolved data path: {data_path}")
