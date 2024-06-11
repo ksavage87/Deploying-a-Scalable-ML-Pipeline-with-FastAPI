@@ -23,7 +23,6 @@ def test_prediction_type():
     with open(model_path, "rb") as f:
         model = pickle.load(f)
 
-    data = pd.read_csv(data_path)
     prediction = model.predict(X_test)
     assert isinstance(prediction, (list, np.ndarray))
 
@@ -38,7 +37,6 @@ def test_compute_metrics():
     with open(model_path, "rb") as f:
         model = pickle.load(f)
 
-    data = pd.read_csv(data_path)
     prediction = model.predict(X_test)
     metrics = compute_metrics(y_test, prediction)
     assert isinstance(metrics, dict)
