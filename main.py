@@ -3,13 +3,7 @@ from pydantic import BaseModel, Field
 import pandas as pd
 from train_model import process_data, inference, apply_label, load_model
 import uvicorn
-
-
-def load_model(path):
-
-    with open(path, 'rb') as f:
-        model = pickle.load(f)
-        return model
+import pickle
 
 
 encoder_path = (
