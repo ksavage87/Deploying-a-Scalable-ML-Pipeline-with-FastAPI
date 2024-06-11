@@ -3,13 +3,12 @@ from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 
 def process_data(X, 
-                 categorical_features=[], 
-                 label=None, 
-                 training=True, 
-                 encoder=None, 
+                 categorical_features=[],
+                 label=None,
+                 training=True,
+                 encoder=None,
                  lb=None
-):
-
+                ):
     if label is not None:
         y = X[label]
         X = X.drop([label], axis=1)

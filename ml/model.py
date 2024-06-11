@@ -25,7 +25,7 @@ def train_model(X_train, y_train):
 
 
 def compute_model_metrics(y, preds):
-    
+
     fbeta = fbeta_score(y, preds, beta=1, zero_division=1)
     precision = precision_score(y, preds, zero_division=1)
     recall = recall_score(y, preds, zero_division=1)
@@ -72,24 +72,24 @@ def load_model(path):
         return model
 
 
-def performance_on_categorical_slice(data, 
-                                     column_name, 
-                                     slicevalue, 
-                                     categorical_features, 
-                                     label, 
-                                     encoder, 
-                                     lb, 
+def performance_on_categorical_slice(data,
+                                     column_name,
+                                     slicevalue,
+                                     categorical_features,
+                                     label,
+                                     encoder,
+                                     lb,
                                      model
-):
+                                    ):
 
     sliced_data = data[data[column_name] == slicevalue]
 
     X_slice, y_slice, _, _ = process_data(
-    sliced_data, 
-    categorical_features, 
-    label, 
-    training=False, 
-    encoder=encoder, 
+    sliced_data,
+    categorical_features,
+    label,
+    training=False,
+    encoder=encoder,
     lb=lb
 )
 

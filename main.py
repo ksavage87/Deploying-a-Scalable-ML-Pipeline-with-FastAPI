@@ -7,6 +7,7 @@ import pandas as pd
 import uvicorn
 
 class CensusData(BaseModel):
+    
     age: int = Field(..., example=25)
     workclass: str = Field(..., example="Private")
     fnlwgt: int = Field(..., example=226802)
@@ -24,17 +25,24 @@ class CensusData(BaseModel):
 
 app = FastAPI()
 
+
 @app.get("/")
+
+
 def read_root():
     return {"message": "Welcome to the Census Prediction API"}
 
 @app.post("/predict")
+
+
 def predict(data: CensusData):
     # Dummy prediction logic
     prediction = "salary"
     return {"prediction": prediction}
 
 if __name__ == "__main__":
+    
+    
     uvicorn.run(app, host="0.0.0.0", port=8000)
     
 
