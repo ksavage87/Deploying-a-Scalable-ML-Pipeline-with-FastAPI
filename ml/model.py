@@ -80,7 +80,7 @@ def performance_on_categorical_slice(data,
                                      encoder,
                                      lb,
                                      model
-                                    ):
+                                     ):
 
     sliced_data = data[data[column_name] == slicevalue]
 
@@ -91,7 +91,7 @@ def performance_on_categorical_slice(data,
         training=False,
         encoder=encoder,
         lb=lb
-)
+    )
 
     preds = inference(model, X_slice)
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
