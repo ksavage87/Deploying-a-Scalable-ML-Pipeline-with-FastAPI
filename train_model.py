@@ -68,18 +68,19 @@ preds = inference(model, X_test)
 p, r, fb = compute_model_metrics(y_test, preds)
 print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}")
 
+
 def compute_metrics(y, preds):
     print("compute_metrics called")
     accuracy = accuracy_score(y, preds)
     precision = precision_score(y, preds, zero_division=1)
     recall = recall_score(y, preds, zero_division=1)
-    
     metrics = {
         'accuracy': accuracy,
         'precision': precision,
         'recall': recall,
     }
     return metrics
+
 
 # Iterate through the categorical features
 for col in cat_features:

@@ -23,6 +23,7 @@ def test_prediction_type():
     prediction = model.predict(X_test)
     assert isinstance(prediction, list)
 
+    
 # Test if the ML model uses the expected algorithm
 def test_model_algorithm():
     """
@@ -30,6 +31,7 @@ def test_model_algorithm():
     """
     assert isinstance(model, RandomForestClassifier)
 
+    
 # Test if the compute_metrics function returns the expected values
 def test_compute_metrics():
     """
@@ -42,6 +44,7 @@ def test_compute_metrics():
     assert "precision" in metrics
     assert "recall" in metrics
 
+    
 if __name__ == "__main__":
     pytest.main()
     
