@@ -6,7 +6,6 @@ import os
 
 
 project_path = os.path.dirname(os.path.abspath(__file__))
-print(f"Loading model from {model_path}")
 
 
 model_path = os.path.join(project_path, "model", "model.pkl")
