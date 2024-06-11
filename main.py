@@ -4,6 +4,16 @@ import pandas as pd
 import uvicorn
 
 
+encoder_path = (
+    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/encoder.pkl"
+)
+model_path = (
+    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/model.pkl"
+)
+encoder = load_model(encoder_path)
+model = load_model(model_path)
+
+
 class CensusData(BaseModel):
     age: int = Field(..., example=25)
     workclass: str = Field(..., example="Private")
@@ -27,6 +37,23 @@ class CensusData(BaseModel):
         example="United-States",
         alias="native-country"
     )
+
+
+class Data(BaseModel):
+    age: int
+    workclass: str
+    fnlwgt: int
+    education: str
+    education_num: int
+    marital_status: str
+    occupation: str
+    relationship: str
+    race: str
+    sex: str
+    capital_gain: int
+    capital_loss: int
+    hours_per_week: int
+    native_country: str
 
 
 app = FastAPI()
@@ -63,9 +90,9 @@ async def post_inference(data: Data):
     ]
 
     data_processed, _, _, _ = process_data(
-        data, 
-        categorical_features=cat_features, 
-        encoder=encoder, 
+        data,
+        categorical_features=cat_features,
+        encoder=encoder,
         training=False
     )
 
