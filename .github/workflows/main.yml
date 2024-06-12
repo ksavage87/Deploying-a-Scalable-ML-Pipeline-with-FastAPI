@@ -22,10 +22,8 @@ jobs:
         echo "Contents of the directory: $(ls -a)"
 
     - name: Download census.csv
-      run: |
-        mkdir -p data
-        wget -O data/census.csv https://raw.githubusercontent.com/ksavage87/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/main/census.csv
-
+      run: cp /Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/census.csv ./ensus.csv
+        
 
     - name: Set up Python
       uses: actions/setup-python@v2
