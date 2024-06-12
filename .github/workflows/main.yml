@@ -16,6 +16,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Debugging
+      run: |
+        echo "Current working directory: $(pwd)"
+        echo "Contents of the directory: $(ls -a)"
+
+    - name: Download census.csv
+      run: |
+        mkdir -p data
+        wget -O data/census.csv https://raw.githubusercontent.com/ksavage87/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/main/census.csv
+
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
