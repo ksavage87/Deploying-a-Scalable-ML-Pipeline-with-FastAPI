@@ -3,16 +3,12 @@ from pydantic import BaseModel, Field
 import pandas as pd
 from train_model import process_data, inference, apply_label, load_model
 import uvicorn
+import os
 
 
-encoder_path = (
-    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
-    "model/encoder.pkl"
-)
-model_path = (
-    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
-    "model/model.pkl"
-)
+base_path = os.path.dirname(os.path.abspath(__file__))
+encoder_path = os.path.join(base_path, "model", "encoder.pkl")
+model_path = os.path.join(base_path, "model", "model.pkl")
 encoder = load_model(encoder_path)
 model = load_model(model_path)
 
