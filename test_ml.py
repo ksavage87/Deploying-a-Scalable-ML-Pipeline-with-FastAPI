@@ -7,13 +7,9 @@ import numpy as np
 import csv
 
 
-if os.getenv('GITHUB_ACTIONS') == 'true':
-    data_path = 'census.csv'
-    model_path = 'model/model.pkl'
-else:
-    project_path = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(project_path, 'census.csv')
-    model_path = os.path.join(project_path, "model", "model.pkl")
+project_path = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(project_path, 'census.csv')
+model_path = os.path.join(project_path, 'model', 'model.pkl')
 
 
 with open(data_path, 'r') as csvfile:

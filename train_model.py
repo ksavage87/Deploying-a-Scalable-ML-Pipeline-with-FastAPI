@@ -13,11 +13,8 @@ from ml.model import (
 )
 
 
-if os.getenv('GITHUB_ACTIONS') == 'true':
-    data_path = 'census.csv'
-else:
-    project_path = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(project_path, 'census.csv')
+project_path = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(project_path, 'census.csv')
 
 
 data = pd.read_csv(data_path)
