@@ -7,16 +7,15 @@ import numpy as np
 import pandas as pd
 
 
-repo_root = os.environ.get('GITHUB_WORKSPACE', os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-
-data_path = os.path.join(repo_root, 'data', 'census.csv')
+if os.getenv('GITHUB_ACTIONS') == 'true':
+    data_path = 'census.csv'
+else:
+    project_path = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(project_path, 'census.csv')
+    model_path = os.path.join(project_path, "model", "model.pkl")
 
 
 data = pd.read_csv(data_path)
-
-
-model_path = os.path.join(project_path, "model", "model.pkl")
 
 
 def test_prediction_type():
