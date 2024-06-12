@@ -7,11 +7,10 @@ import numpy as np
 import pandas as pd
 
 
-if os.getenv('GITHUB_ACTIONS') == 'true':
-    data_path = 'data/census.csv'
-else:
-    project_path = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(project_path, 'data', 'census.csv')
+repo_root = os.environ.get('GITHUB_WORKSPACE', os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
+data_path = os.path.join(repo_root, 'data', 'census.csv')
 
 
 data = pd.read_csv(data_path)
