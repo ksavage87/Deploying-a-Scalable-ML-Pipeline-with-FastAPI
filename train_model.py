@@ -1,5 +1,6 @@
 import os  # Add import statement for os
 import pandas as pd
+import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 from ml.data import process_data
@@ -12,13 +13,16 @@ from ml.model import (
     train_model,
 )
 
-# Load the census.csv data
-project_path = (
-    "/Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
-)
-data_path = os.path.join(project_path, "data", "census.csv")
-print(data_path)
+
+if os.getenv('GITHUB_ACTIONS') == 'true':
+    data_path = 'census.csv'
+else:
+    project_path = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(project_path, 'census.csv')
+
+
 data = pd.read_csv(data_path)
+
 
 train, test = train_test_split(data, test_size=0.2, random_state=42)
 
