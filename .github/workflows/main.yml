@@ -22,7 +22,7 @@ jobs:
         echo "Contents of the directory: $(ls -a)"
 
     - name: Download census.csv
-      run: cp /Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/census.csv ./ensus.csv
+      run: cp /Users/kaleymayer/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/census.csv ./census.csv
         
 
     - name: Set up Python
