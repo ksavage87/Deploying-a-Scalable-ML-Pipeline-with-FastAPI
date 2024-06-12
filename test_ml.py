@@ -4,7 +4,6 @@ from sklearn.ensemble import RandomForestClassifier
 from train_model import X_test, y_test, compute_metrics
 import os
 import numpy as np
-import pandas as pd
 import csv
 
 
