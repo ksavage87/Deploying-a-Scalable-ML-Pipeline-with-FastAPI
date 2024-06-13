@@ -20,7 +20,7 @@ The training data was gathered from the census.csv file provided. The data in th
 
 ## Evaluation Data
 
-The census income data used for training was also used for the evulation data.
+The census income data used for training was also used for the evulation data. Eighty percent of the data was used to train the model. Twenty percent of the data was used to test the data.
 
 ## Metrics
 _Please include the metrics used and your model's performance on those metrics._
